@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        .boxes {
+            border: 4px solid blue;
+            background-color: aquamarine;
+            width: 100px;
+            top: 20px;
+            left: 60px;
+        }
+
+        button {
+            color: gray;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>CSS display, float, position, z-index 속성 체험 모둠</h1>
+
+    <diV style="background-color:bisque; width: 480px; height: 320px;">
+        <i style="color:orange">containing block</i>
+        <span class="boxes">
+            box0
+        </span>
+        <span class="boxes">
+            box1
+        </span>
+        <span class="boxes">
+            box2
+        </span>
+    </diV>
+
+    <p>
+        .boxes {
+        border: 4px solid blue;
+        background-color: aquamarine;
+        }
+    </p>
+    <p>
+        box1 { <br />
+        &nbsp;&nbsp;display:
+        <button class="display-buttons">inline</button>
+        <button class="display-buttons">block</button>
+        <button class="display-buttons">inline-block</button>
+        ;
+        width: 100px;
+        <br />
+
+        &nbsp;&nbsp;float:
+        <button class="float-buttons">none</button>
+        <button class="float-buttons">left</button>
+        <button class="float-buttons">right</button>
+        ;
+        <br />
+
+        &nbsp;&nbsp;position:
+        <button class="position-buttons">static</button>
+        <button class="position-buttons">relative</button>
+        <button class="position-buttons">absolute</button>
+        <button class="position-buttons">fixed</button>
+        <button class="position-buttons">sticky</button>
+        ;
+        top: 20px;
+        left: 60px;
+        <br />
+
+        &nbsp;&nbsp;z-index:
+        <button class="zIndex-buttons">-1</button>
+        <button class="zIndex-buttons">0</button>
+        <button class="zIndex-buttons">1</button>
+        <button class="zIndex-buttons">2</button>
+        <button class="zIndex-buttons">40000</button>
+        ;
+
+        <br /> }
+    </p>
+
+    <p>
+        As float implies the use of the block layout, it modifies the computed value of the display values, in some
+        cases: ... (https://developer.mozilla.org/en-US/docs/Web/CSS/float)
+    </p>
+
+    <p>
+        Static positioning is the default that every element gets. It just means "put the element into its normal
+        position in the document flow — nothing special to see here."
+        (https://developer.mozilla.org/en-US/docs/Learn/CSS/CSS_layout/Positioning#static_positioning)
+    </p>
+
+    <p>
+        컨테이닝 블록의 모든 것(https://developer.mozilla.org/ko/docs/Web/CSS/Containing_block)
+    </p>
+
+    <script>
+        function onClickDisplay(e) {
+            for (box of document.getElementsByClassName("display-buttons")) {
+                box.style.color = "gray";
+            }
+            e.target.style.color = "black";
+
+            document.getElementsByClassName("boxes")[1].style.display = e.target.innerText;
+        }
+
+        function onClickFloat(e) {
+            for (box of document.getElementsByClassName("float-buttons")) {
+                box.style.color = "gray";
+            }
+            e.target.style.color = "black";
+
+            document.getElementsByClassName("boxes")[1].style.cssFloat = e.target.innerText;
+        }
+
+        function onClickPosition(e) {
+            for (box of document.getElementsByClassName("position-buttons")) {
+                box.style.color = "gray";
+            }
+            e.target.style.color = "black";
+
+            document.getElementsByClassName("boxes")[1].style.position = e.target.innerText;
+        }
+
+        function onClickzIndex(e) {
+            for (box of document.getElementsByClassName("zIndex-buttons")) {
+                box.style.color = "gray";
+            }
+            e.target.style.color = "black";
+
+            document.getElementsByClassName("boxes")[1].style.zIndex = e.target.innerText;
+        }
+
+        var buttons;
+
+        buttons = document.getElementsByClassName("display-buttons");
+        for (let button of buttons) {
+            button.addEventListener("click", onClickDisplay);
+        }
+        buttons[0].style.color = "black";
+
+        buttons = document.getElementsByClassName("float-buttons");
+        for (let button of buttons) {
+            button.addEventListener("click", onClickFloat);
+        }
+        buttons[0].style.color = "black";
+
+        buttons = document.getElementsByClassName("position-buttons");
+        for (let button of buttons) {
+            button.addEventListener("click", onClickPosition);
+        }
+        buttons[0].style.color = "black";
+
+        buttons = document.getElementsByClassName("zIndex-buttons");
+        for (let button of buttons) {
+            button.addEventListener("click", onClickzIndex);
+        }
+        buttons[0].style.color = "black";
+    </script>
+</body>
+
+</html>
