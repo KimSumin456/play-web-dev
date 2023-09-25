@@ -5,10 +5,83 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>JS</title>
+
+    <style>
+        pre {
+            background-color: antiquewhite;
+        }
+
+        var {
+            font-style: normal;
+            font-weight: bold;
+        }
+
+        samp {
+            color: green;
+            font-weight: bold;
+        }
+    </style>
 </head>
 
 <body>
-    <!--visual studio 확장 플러그인 code runner, live server 설치-->
+    <h1>배열 고차 함수 (Higher order function)</h1>
+    <pre><code>
+        <var>console.log("배열 고차 함수 (Higher order function)");</var>
+
+        <samp>const numbers = [1, 4, 9, 16, 25];</samp>
+
+        numbers.<var>forEach</var>((item, index, self) => {
+            console.log(`numbers[${index}] = ${item}`);
+        });
+        console.log(`numbers: ${numbers}`);
+        <samp>// numbers: 1,4,9,16,25</samp>
+
+        const roots = numbers.<var>map</var>((item, index, self) => {
+            return Math.sqrt(item);
+        });
+        console.log(`roots: ${roots}`);
+        <samp>// roots: 1,2,3,4,5</samp>
+
+        const result = numbers.<var>filter</var>((item, index, self) => {
+            return item % 2 == 1;
+        })
+        console.log(`result: ${result}`);
+        <samp>// result: 1,9,25</samp>
+
+        const sum = numbers.<var>reduce</var>((previousValue, currentValue, currentIndex, self) => {
+            return previousValue + currentValue;
+        })
+        console.log(`sum: ${sum}`);
+        <samp>// sum: 55</samp>
+    </code></pre>
+    <script>
+        // visual studio 확장 플러그인 code runner, live server 설치
+
+        // 배열 고차 함수 (Higher order function)
+        console.log("배열 고차 함수 (Higher order function)");
+
+        const numbers = [1, 4, 9, 16, 25];
+
+        numbers.forEach((item, index, self) => {
+            console.log(`numbers[${index}] = ${item}`);
+        });
+        console.log(`numbers: ${numbers}`);
+
+        const roots = numbers.map((item, index, self) => {
+            return Math.sqrt(item);
+        });
+        console.log(`roots: ${roots}`);
+
+        const result = numbers.filter((item, index, self) => {
+            return item % 2 == 1;
+        })
+        console.log(`result: ${result}`);
+
+        const sum = numbers.reduce((previousValue, currentValue, currentIndex, self) => {
+            return previousValue + currentValue;
+        })
+        console.log(`sum: ${sum}`);
+    </script>
 </body>
 
 </html>
